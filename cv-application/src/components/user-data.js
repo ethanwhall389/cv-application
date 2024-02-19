@@ -1,7 +1,14 @@
+import { useState } from "react";
+
+// const [data, setData] = useState({
+//     name: "",
+//     email: "",
+//     phone: "",
+// })
+
 const data = {
-    name: ,
-    email: ,
-    phone
+    name: '',
+    email: '',
 }
 
 export default data;

@@ -1,10 +1,8 @@
-import { useState } from 'react'
 import './App.css'
 import CV from './components/cv'
 import EditPanel from './components/edit'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className='bg-gradient-to-b from-sunglow to-sunglow-dark w-screen h-screen p-8 max-w-screen-xl'>
