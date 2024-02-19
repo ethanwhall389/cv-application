@@ -1,8 +1,7 @@
-export default function Panel({title, children}) {
-    return (
-    <div className="bg-charcoal flex-grow rounded-md p-4">
-        <h1 className="text-2xl">{title}</h1>
-        {children}
+export default function Panel({title}) {
+   return (
+   <div className="bg-slate-400 flex-1">
+        <h2>{title}</h2>
     </div>
-    )
+   )
 }

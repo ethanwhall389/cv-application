@@ -1,17 +1,15 @@
 import './App.css'
-import CV from './components/cv'
-import EditPanel from './components/edit'
+import Panel from './components/panel'
 
 function App() {
-
   return (
-    <div className='bg-gradient-to-b from-sunglow to-sunglow-dark w-screen h-screen p-8 max-w-screen-xl'>
-      <h1 className='text-4xl text-charcoal mb-5'>CV Generator</h1>
-      <div className='flex flex-1 justify-between gap-4'>
-        <EditPanel/>
-        <CV/>
-      </div>
+  <div className='w-screen h-screen bg-slate-500 p-6'>
+    <h1>CV Generator</h1>
+    <div className='flex gap-5'>
+      <Panel title={'Edit'}/>
+      <Panel title={'Preview'}/>
     </div>
+  </div>
   )
 }
 
