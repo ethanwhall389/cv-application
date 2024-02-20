@@ -13,20 +13,21 @@ export default function Accordion({ title, children, isOpen, setIndex, index }) 
         setIndex( (prevIndex) => (prevIndex === index ? null : index))
     }
 
-    let rotateArrow = isOpen ? 'scale-150' : 'rotate-180 scale-150'
+    let rotateArrow = isOpen ? 'rotate-0' : 'rotate-180'
     
     return (
         <div className="flex flex-col border-2 rounded-lg overflow-hidden">
             
             <div className='flex justify-between bg-slate-300 px-3 pt-2 rounded-t-md' onClick={handleClick}>
                 <h1 className="text-start font-bold mb-2 text-lg">{title}</h1>
-                <ExpandLessIcon className={rotateArrow} />
+                <ExpandLessIcon className={`${rotateArrow} scale-150 transition-all`} />
             </div>
 
             <div ref={contentHeight} style={isOpen 
                 ? {height: contentHeight.current.scrollHeight}
-                : {height: '0px'} 
-                }>
+                : {height: '0px'}}
+                className='transition-all duration-500'
+                >
 
                 {children}
 
