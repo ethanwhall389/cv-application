@@ -11,7 +11,7 @@ function App() {
 
   return (
   <div className='w-screen h-screen bg-slate-500 p-6'>
-    <h1>CV Generator</h1>
+    <h1 className='text-3xl font-bold mb-6'>CV Generator</h1>
     <div className='flex gap-5'>
       <Panel title={'Edit'}>
         <EditGeneralInfo 
