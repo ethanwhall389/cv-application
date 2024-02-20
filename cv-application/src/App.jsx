@@ -3,21 +3,35 @@ import './App.css'
 import DefaultData from './data/personal-data'
 import Panel from './components/panel'
 import EditGeneralInfo from './components/edit/edit-gen-info'
+import Accordion from './components/edit/accordion'
 import DisplayGenInfo from './components/preview/display-gen-info'
 
 
 function App() {
   const [personalData, setPersonalData] = useState(DefaultData.personal);
+  const [activeAccordionIndex, setActiveAccordion] = useState(null);
 
   return (
   <div className='w-screen h-screen bg-slate-500 p-6'>
     <h1 className='text-3xl font-bold mb-6'>CV Generator</h1>
     <div className='flex gap-5'>
       <Panel title={'Edit'}>
-        <EditGeneralInfo 
+        <Accordion title='General Info' index={0} setIndex={setActiveAccordion} isOpen={activeAccordionIndex === 0}>
+          <EditGeneralInfo 
+          personalData={personalData}
+          onChangePersonalData={setPersonalData}
+          />
+        </Accordion>
+        <Accordion title='General Info' index={1} setIndex={setActiveAccordion} isOpen={activeAccordionIndex === 1}>
+          <EditGeneralInfo 
+          personalData={personalData}
+          onChangePersonalData={setPersonalData}
+          />
+        </Accordion>
+        {/* <EditGeneralInfo 
         personalData={personalData}
         onChangePersonalData={setPersonalData}
-        />
+        /> */}
       </Panel>
 
       <Panel title={'Preview'}>
