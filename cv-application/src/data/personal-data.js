@@ -5,10 +5,6 @@ const DefaultData = {
         email: 'jonnydoe@address.com',
         phone: '(123) 456-7890',
     },
-    education: {
-        degree: 'BS',
-        description: 'This is education description',
-    }
 }
 
 export default DefaultData;

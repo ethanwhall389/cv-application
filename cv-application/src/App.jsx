@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import './App.css'
 import DefaultData from './data/personal-data'
+import EducationData from './data/education-data'
 import Panel from './components/panel'
 import EditGeneralInfo from './components/edit/edit-gen-info'
+import EditEducation from './components/edit/edit-education'
 import Accordion from './components/edit/accordion'
 import DisplayGenInfo from './components/preview/display-gen-info'
 
 
 function App() {
   const [personalData, setPersonalData] = useState(DefaultData.personal);
+  const [educationData, setEducationData] = useState(EducationData);
   const [activeAccordionIndex, setActiveAccordion] = useState(null);
 
   return (
@@ -17,15 +20,12 @@ function App() {
     <div className='flex gap-5'>
       <Panel title={'Edit'}>
         <Accordion title='General Info' index={0} setIndex={setActiveAccordion} isOpen={activeAccordionIndex === 0}>
-          <EditGeneralInfo 
-          personalData={personalData}
-          onChangePersonalData={setPersonalData}
-          />
+          <EditGeneralInfo personalData={personalData} onChangePersonalData={setPersonalData}/>
         </Accordion>
         <Accordion title='General Info' index={1} setIndex={setActiveAccordion} isOpen={activeAccordionIndex === 1}>
-          <EditGeneralInfo 
-          personalData={personalData}
-          onChangePersonalData={setPersonalData}
+          <EditEducation 
+          educationData={educationData}
+          onChangeEducationData={setEducationData}
           />
         </Accordion>
         {/* <EditGeneralInfo 
