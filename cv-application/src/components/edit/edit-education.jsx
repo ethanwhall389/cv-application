@@ -1,40 +1,74 @@
 export default function EditEducation({ educationData, onChangeEducationData }) {
+    
+    
+    
     return (
-        <form action="" className="flex flex-col text-charcoal px-3 pb-3">
-            <label htmlFor="name" className="text-start">Name</label>
-            <input 
-            type="text"
-            value={personalData.name}
-            id="name"
-            onChange={(event) => handleChangePersonal(event, 'name')}
-            className="rounded-lg p-1 mb-2"
-            />
-
-            <label htmlFor="address" className="text-start">Address</label>
-            <input
-            type="tel"
-            value={personalData.address}
-            id="address"
-            onChange={(event) => {handleChangePersonal(event, 'address')}}
-            className="rounded-lg p-1 mb-2"
-            />
-
-            <label htmlFor="email" className="text-start">Email</label>
-            <input 
-            type="text" 
-            value={personalData.email}
-            id="email" 
-            onChange={(event) => handleChangePersonal(event, 'email')}
-            className="rounded-lg p-1 mb-2"
-            />
-
-            <label htmlFor="phone" className="text-start">Phone</label>
-            <input type="tel"
-            value={personalData.phone}
-            id="phone" 
-            onChange={(event) => handleChangePersonal(event, 'phone')}
-            className="rounded-lg p-1 mb-2"
-            />
+        
+        <form action="" className="">
+            
+            {educationData.map(entry => (
+                <EducationEntry key={entry.id} data={entry}/>
+            ))}
         </form>
+    )
+}
+
+function EducationEntry({ data, key }) {
+
+    function handleChangeEducation(event, objectKey, key) {
+
+        function getIndex() {
+            for (let i = 0; i < educationData.length; i++) {
+                if (educationData[i].id === key) {
+                    return i;
+                }
+            }
+        }
+
+        const entryChange = educationData[getIndex()];
+        
+        const newData = {...educationData, [entryChange.objectKey]: event.target.value }
+
+        onChangeEducationData(newData);
+    }
+
+    return (
+        <div className="text-charcoal flex flex-col px-3 pb-3">
+            <label htmlFor="school" className="text-start">School</label>
+            <input
+            type="text"
+            value={data.schoolName}
+            id="school"
+            onChange={(e) => handleChangeEducation(e, 'schoolName', key)}
+            className="rounded-lg p-1 mb-2"
+            />
+            
+            <label htmlFor="degree" className="text-start">Degree</label>
+            <input
+            type="text"
+            value={data.degree}
+            id="degree"
+            onChange={(e) => handleChangeEducation(e, 'degree', key)}
+            className="rounded-lg p-1 mb-2"
+            />
+            
+            <label htmlFor="start" className="text-start">Start Date</label>
+            <input
+            type="date"
+            value={data.startDate}
+            id="start"
+            onChange={(e) => handleChangeEducation(e, 'startDate', key)}
+            className="rounded-lg p-1 mb-2"
+            />
+
+            <label htmlFor="end" className="text-start">End Date</label>
+            <input
+            type="date"
+            value={data.endDate}
+            id="end"
+            onChange={(e) => handleChangeEducation(e, 'endDate', key)}
+            className="rounded-lg p-1 mb-2"
+            />
+        </div>
     )
 }
