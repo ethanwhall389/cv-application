@@ -2,13 +2,13 @@ export default function EditEducation({ educationData, onChangeEducationData }) 
     return (
         
         <form action="" className="">
-
-            {console.log(educationData)}
-            
             {educationData.map(entry => (
-                <>
-                <EducationEntry dataEntry={entry} entryId={entry.id} educationData={educationData} setEducationData={onChangeEducationData}/>
-                </>
+                <EducationEntry
+                key={entry.id}
+                dataEntry={entry}
+                entryId={entry.id}
+                educationData={educationData}
+                setEducationData={onChangeEducationData}/>
             ))}
         </form>
     )
@@ -28,10 +28,6 @@ function EducationEntry({ dataEntry, entryId, educationData, setEducationData })
         }
 
         const index = getIndex();
-
-        // console.log(educationData)
-
-        console.log(`editing: ${educationData[index][objectKey]}`, `index: ${index}`);
         
         const newData = [...educationData]
         newData[index][objectKey]=event.target.value;
@@ -56,6 +52,15 @@ function EducationEntry({ dataEntry, entryId, educationData, setEducationData })
             value={dataEntry.degree}
             id="degree"
             onChange={(e) => handleChangeEducation(e, 'degree', entryId)}
+            className="rounded-lg p-1 mb-2"
+            />
+
+            <label htmlFor="field" className="text-start">Field of study</label>
+            <input
+            type="text"
+            value={dataEntry.field}
+            id="field"
+            onChange={(e) => handleChangeEducation(e, 'field', entryId)}
             className="rounded-lg p-1 mb-2"
             />
             

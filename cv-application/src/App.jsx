@@ -7,6 +7,7 @@ import EditGeneralInfo from './components/edit/edit-gen-info'
 import EditEducation from './components/edit/edit-education'
 import Accordion from './components/edit/accordion'
 import DisplayGenInfo from './components/preview/display-gen-info'
+import DisplayEducation from './components/preview/display-education'
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
 
       <Panel title={'Preview'}>
         <DisplayGenInfo personalData={personalData}/>
+        <DisplayEducation data={educationData}/>
       </Panel>
     </div>
   </div>
