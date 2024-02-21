@@ -3,7 +3,7 @@ import Accordion from "./accordion";
 export default function EditEducation({ educationData, onChangeEducationData}) { 
     return (
         
-        <form action="" className="">
+        <div className="">
             {educationData.map(entry => (
                 <EducationEntry
                 key={entry.id}
@@ -12,7 +12,7 @@ export default function EditEducation({ educationData, onChangeEducationData}) {
                 educationData={educationData}
                 setEducationData={onChangeEducationData}/>
             ))}
-        </form>
+        </div>
     )
 }
 
@@ -38,7 +38,7 @@ function EducationEntry({ dataEntry, entryId, educationData, setEducationData })
     }
 
     return (
-        <div className="text-charcoal flex flex-col px-3 pb-3">
+        <form className="text-charcoal flex flex-col px-3 py-3 border-2 rounded-lg m-3">
             <label htmlFor="school" className="text-start">School</label>
             <input
             type="text"
@@ -83,6 +83,6 @@ function EducationEntry({ dataEntry, entryId, educationData, setEducationData })
             onChange={(e) => handleChangeEducation(e, 'endDate', entryId)}
             className="rounded-lg p-1 mb-2"
             />
-        </div>
+        </form>
     )
 }
