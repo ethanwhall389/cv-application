@@ -1,4 +1,6 @@
-export default function EditEducation({ educationData, onChangeEducationData }) { 
+import Accordion from "./accordion";
+
+export default function EditEducation({ educationData, onChangeEducationData}) { 
     return (
         
         <form action="" className="">

@@ -23,7 +23,7 @@ function App() {
         <Accordion title='General Info' index={0} setIndex={setActiveAccordion} isOpen={activeAccordionIndex === 0}>
           <EditGeneralInfo personalData={personalData} onChangePersonalData={setPersonalData}/>
         </Accordion>
-        <Accordion title='General Info' index={1} setIndex={setActiveAccordion} isOpen={activeAccordionIndex === 1}>
+        <Accordion title='Education' index={1} setIndex={setActiveAccordion} isOpen={activeAccordionIndex === 1}>
           <EditEducation 
           educationData={educationData}
           onChangeEducationData={setEducationData}
