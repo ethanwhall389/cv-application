@@ -12,13 +12,14 @@ export default function EditProfessional({ professionalData, onChangeProfessiona
                 professionalData={professionalData}
                 setProfessional={onChangeProfessional}/>
             ))}
+            
         </div>
     )
 }
 
 function Job({ jobData, jobId, professionalData, setProfessional }) {
 
-    const [isChecked, setIsChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState(professionalData.current);
 
     function handleCheck(e) {
         setIsChecked(isChecked === true ? false : true);
@@ -97,6 +98,7 @@ function Job({ jobData, jobId, professionalData, setProfessional }) {
             <label htmlFor="end" className="text-start">End Date</label>
             <input
             disabled={isChecked}
+            checked={isChecked}
             type="date"
             value={jobData.endDate}
             id="end"

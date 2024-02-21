@@ -1,4 +1,4 @@
-
+import TextInput from "./text-input";
 
 export default function EditGeneralInfo({personalData, onChangePersonalData}) {
 
@@ -10,38 +10,50 @@ export default function EditGeneralInfo({personalData, onChangePersonalData}) {
     return (
         <form action="" className="flex flex-col text-charcoal px-3 pb-3">
             <label htmlFor="name" className="text-start">Name</label>
-            <input 
-            type="text"
-            value={personalData.name}
-            id="name"
-            onChange={(event) => handleChangePersonal(event, 'name')}
-            className="rounded-lg p-1 mb-2"
+            <TextInput
+                type='text'
+                placeholder={'Full name'}
+                value={personalData.name}
+                id='name'
+                handleClick={handleChangePersonal}
             />
 
             <label htmlFor="address" className="text-start">Address</label>
-            <input
-            type="tel"
+            <TextInput
+            type="text"
+            placeholder={'Street, State, City'}
             value={personalData.address}
             id="address"
-            onChange={(event) => {handleChangePersonal(event, 'address')}}
-            className="rounded-lg p-1 mb-2"
+            handleClick={handleChangePersonal}
             />
 
             <label htmlFor="email" className="text-start">Email</label>
-            <input 
-            type="text" 
+            <TextInput
+            type="email"
+            placeholder={'johndoe@gmail.com'}
             value={personalData.email}
             id="email" 
-            onChange={(event) => handleChangePersonal(event, 'email')}
-            className="rounded-lg p-1 mb-2"
+            handleClick={handleChangePersonal}
             />
 
             <label htmlFor="phone" className="text-start">Phone</label>
-            <input type="tel"
+            <TextInput
+            type="tel"
+            placeholder={'(123) 456-7890'}
             value={personalData.phone}
             id="phone" 
-            onChange={(event) => handleChangePersonal(event, 'phone')}
-            className="rounded-lg p-1 mb-2"
+            handleClick={handleChangePersonal}
+            />
+
+            <label htmlFor="statement" className="text-start">Professional Statement</label>
+            <textarea
+            rows={3}
+            columns={50}
+            placeholder="Write a statement summarizing who you are."
+            value={personalData.statement}
+            id="responsibilities"
+            onChange={(e) => handleChangePersonal(e, 'statement')}
+            className="rounded-lg p-1 px-2 mb-2"
             />
 
         </form>

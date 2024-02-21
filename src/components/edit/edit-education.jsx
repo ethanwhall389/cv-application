@@ -1,22 +1,56 @@
-import Accordion from "./accordion";
+import Button from "../button";
+import DeleteBttn from "../delete-bttn";
 
 export default function EditEducation({ educationData, onChangeEducationData}) { 
+    
+    function handleNewEntry() {
+        const newData = [...educationData];
+        const prevId = educationData.length > 0 ? educationData[educationData.length-1].id : -1;
+        newData.push({
+            id: prevId+1,
+            schoolName: '',
+            degree: '',
+            field: '',
+            startDate: '',
+            endDate: '',
+        })
+        onChangeEducationData(newData);
+    }
+
+    function handleDeleteEntry(event, entryId) {
+        event.preventDefault();
+        // console.log(event.target);        
+        const newData = educationData.filter(entry => {
+            return entry.id !== entryId
+        })
+        onChangeEducationData(newData);
+
+    }
+    
     return (
         
         <div className="">
-            {educationData.map(entry => (
+            {educationData.map((entry) => (
+
                 <EducationEntry
                 key={entry.id}
                 dataEntry={entry}
                 entryId={entry.id}
                 educationData={educationData}
-                setEducationData={onChangeEducationData}/>
+                setEducationData={onChangeEducationData}
+                >
+                    <DeleteBttn handleClick={handleDeleteEntry} entryId={entry.id}/>
+                </EducationEntry>
             ))}
+            <Button
+            text={'Add Entry'}
+            handleClick={handleNewEntry}
+            />
         </div>
     )
 }
 
-function EducationEntry({ dataEntry, entryId, educationData, setEducationData }) {
+function EducationEntry({ dataEntry, entryId, educationData, setEducationData, children }) {
 
     
     function handleChangeEducation(event, objectKey, entryId) {
@@ -83,6 +117,8 @@ function EducationEntry({ dataEntry, entryId, educationData, setEducationData })
             onChange={(e) => handleChangeEducation(e, 'endDate', entryId)}
             className="rounded-lg p-1 mb-2"
             />
+
+            {children}
         </form>
     )
 }
