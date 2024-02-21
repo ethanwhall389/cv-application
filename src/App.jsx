@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import DefaultData from './data/personal-data'
+import Button from './components/button'
+import { DefaultData, personalDataEmpty} from './data/personal-data'
 import EducationData from './data/education-data'
 import ProfessionalData from './data/professional-data'
 import Panel from './components/panel'
@@ -18,10 +19,28 @@ function App() {
   const [educationData, setEducationData] = useState(EducationData);
   const [professionalData, setProfessionalData] = useState(ProfessionalData);
   const [activeAccordionIndex, setActiveAccordion] = useState(null);
+  const [showMain, setShowMain] = useState(false);
+
+  function createNew() {
+    setPersonalData(personalDataEmpty);
+    setShowMain(true);
+  }
+
+  function viewDemo() {
+    setShowMain(true);
+  }
 
   return (
   <div className='w-screen h-screen bg-slate-500 p-6'>
-    <div className='max-w-2xl mx-auto lg:max-w-7xl'>
+    <div className='flex gap-2 justify-center'
+      style={showMain ? {display:'none'} : {display:'flex'}}
+    >
+      <Button text={'Create New'} bttnColor='slate-400' handleClick={createNew}></Button>
+      <Button text={'See Demo'} bttnColor='slate-400' handleClick={viewDemo}></Button>
+    </div>
+    <div className='max-w-2xl mx-auto lg:max-w-7xl'
+      style={showMain ? {display:'block'} : {display:'none'}}
+    >
       <h1 className='text-3xl font-bold mb-6'>CV Generator</h1>
       <div className='flex flex-col gap-5 lg:flex-row'>
         <Panel title={'Edit'}>

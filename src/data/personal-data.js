@@ -8,4 +8,13 @@ const DefaultData = {
     },
 }
 
-export default DefaultData;
+const personalDataEmpty = {
+    personal: {
+        name: '',
+        address: '',
+        email: '',
+        phone: '',
+        statement: '',
+    }
+}
+export { DefaultData, personalDataEmpty };
