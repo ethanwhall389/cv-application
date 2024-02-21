@@ -2,8 +2,8 @@ export default function DisplayEducation({ data }) {
 
     return (
 
-        <div className="border-2 rounded-lg p-2 text-start">
-            <h2 className="text-lg font-bold">Education</h2>
+        <div className="p-2 my-4 text-start">
+            <h2 className="text-lg font-bold border-b-2">Education</h2>
             {data.map( (entry, index) => (
                 <DisplayEntry key={entry.id} entryData={entry} length={data.length} index={index}/>
             ))}
@@ -11,15 +11,10 @@ export default function DisplayEducation({ data }) {
     )
 }
 
-function DisplayEntry({ entryData, length, index }) {
-    
-    let bottomBorder = '';
-    if (length > 1) {
-        index !== length-1 ? bottomBorder = 'border-b-2' : '';
-    }
+function DisplayEntry({ entryData }) {
     
     return (
-        <div className={`flex flex-col items-start ${bottomBorder} py-2`}>
+        <div className='flex flex-col items-start py-2'>
             <h2 className="text-md font-bold">{entryData.schoolName}</h2>
             <div>
                 <span>{entryData.degree}, </span>
