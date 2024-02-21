@@ -1,35 +1,42 @@
-export default function EditEducation({ educationData, onChangeEducationData }) {
-    
-    
-    
+export default function EditEducation({ educationData, onChangeEducationData }) { 
     return (
         
         <form action="" className="">
+
+            {console.log(educationData)}
             
             {educationData.map(entry => (
-                <EducationEntry key={entry.id} data={entry}/>
+                <>
+                <EducationEntry dataEntry={entry} entryId={entry.id} educationData={educationData} setEducationData={onChangeEducationData}/>
+                </>
             ))}
         </form>
     )
 }
 
-function EducationEntry({ data, key }) {
+function EducationEntry({ dataEntry, entryId, educationData, setEducationData }) {
 
-    function handleChangeEducation(event, objectKey, key) {
+    
+    function handleChangeEducation(event, objectKey, entryId) {
 
         function getIndex() {
             for (let i = 0; i < educationData.length; i++) {
-                if (educationData[i].id === key) {
+                if (educationData[i].id === entryId) {
                     return i;
                 }
             }
         }
 
-        const entryChange = educationData[getIndex()];
-        
-        const newData = {...educationData, [entryChange.objectKey]: event.target.value }
+        const index = getIndex();
 
-        onChangeEducationData(newData);
+        // console.log(educationData)
+
+        console.log(`editing: ${educationData[index][objectKey]}`, `index: ${index}`);
+        
+        const newData = [...educationData]
+        newData[index][objectKey]=event.target.value;
+
+        setEducationData(newData);
     }
 
     return (
@@ -37,36 +44,36 @@ function EducationEntry({ data, key }) {
             <label htmlFor="school" className="text-start">School</label>
             <input
             type="text"
-            value={data.schoolName}
+            value={dataEntry.schoolName}
             id="school"
-            onChange={(e) => handleChangeEducation(e, 'schoolName', key)}
+            onChange={(e) => handleChangeEducation(e, 'schoolName', entryId)}
             className="rounded-lg p-1 mb-2"
             />
             
             <label htmlFor="degree" className="text-start">Degree</label>
             <input
             type="text"
-            value={data.degree}
+            value={dataEntry.degree}
             id="degree"
-            onChange={(e) => handleChangeEducation(e, 'degree', key)}
+            onChange={(e) => handleChangeEducation(e, 'degree', entryId)}
             className="rounded-lg p-1 mb-2"
             />
             
             <label htmlFor="start" className="text-start">Start Date</label>
             <input
             type="date"
-            value={data.startDate}
+            value={dataEntry.startDate}
             id="start"
-            onChange={(e) => handleChangeEducation(e, 'startDate', key)}
+            onChange={(e) => handleChangeEducation(e, 'startDate', entryId)}
             className="rounded-lg p-1 mb-2"
             />
 
             <label htmlFor="end" className="text-start">End Date</label>
             <input
             type="date"
-            value={data.endDate}
+            value={dataEntry.endDate}
             id="end"
-            onChange={(e) => handleChangeEducation(e, 'endDate', key)}
+            onChange={(e) => handleChangeEducation(e, 'endDate', entryId)}
             className="rounded-lg p-1 mb-2"
             />
         </div>
