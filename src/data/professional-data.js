@@ -1,4 +1,4 @@
-const ProfessionalData = [
+const professionalDataDemo = [
     {
         id: 0,
         jobTitle: 'Janitor',
@@ -17,5 +17,16 @@ const ProfessionalData = [
     }
 ]
 
+const professionalDataEmpty = [
+    {
+        id: '',
+        jobTitle: '',
+        responsibilities: '',
+        startDate: '',
+        endDate: '',
+        current: false,
+    },
+]
 
-export default ProfessionalData;
+
+export { professionalDataDemo, professionalDataEmpty };

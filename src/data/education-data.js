@@ -1,4 +1,4 @@
-const EducationData = [
+const educationDataDemo = [
     {
         id: 0,
         schoolName: 'Bob Jones University',
@@ -18,4 +18,15 @@ const EducationData = [
     }
 ]
 
-export default EducationData;
+const educationDataEmpty = [
+    {
+        id: '',
+        schoolName: '',
+        degree: '',
+        field: '',
+        startDate: '',
+        endDate: '',
+    },
+]
+
+export { educationDataDemo, educationDataEmpty };

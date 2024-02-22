@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import './App.css'
 import Button from './components/button'
-import { DefaultData, personalDataEmpty} from './data/personal-data'
-import EducationData from './data/education-data'
-import ProfessionalData from './data/professional-data'
+import { personalDataDemo, personalDataEmpty} from './data/personal-data'
+import { educationDataDemo, educationDataEmpty } from './data/education-data'
+import { professionalDataDemo, professionalDataEmpty } from './data/professional-data'
 import Panel from './components/panel'
 import EditGeneralInfo from './components/edit/edit-gen-info'
 import EditEducation from './components/edit/edit-education'
@@ -15,14 +15,16 @@ import DisplayProfessional from './components/preview/display-professional'
 
 
 function App() {
-  const [personalData, setPersonalData] = useState(DefaultData.personal);
-  const [educationData, setEducationData] = useState(EducationData);
-  const [professionalData, setProfessionalData] = useState(ProfessionalData);
+  const [personalData, setPersonalData] = useState(personalDataDemo);
+  const [educationData, setEducationData] = useState(educationDataDemo);
+  const [professionalData, setProfessionalData] = useState(professionalDataDemo);
   const [activeAccordionIndex, setActiveAccordion] = useState(null);
   const [showMain, setShowMain] = useState(false);
 
   function createNew() {
     setPersonalData(personalDataEmpty);
+    setEducationData(educationDataEmpty);
+    setProfessionalData(professionalDataEmpty);
     setShowMain(true);
   }
 
@@ -31,7 +33,7 @@ function App() {
   }
 
   return (
-  <div className='w-screen h-screen bg-slate-500 p-6'>
+  <div className='w-screen h-screen overflow-y-scroll bg-slate-500 p-6'>
     <div className='flex gap-2 justify-center'
       style={showMain ? {display:'none'} : {display:'flex'}}
     >

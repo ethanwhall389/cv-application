@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TextInput from "./text-input";
 
 export default function EditProfessional({ professionalData, onChangeProfessional }) {
     return (
@@ -19,7 +20,7 @@ export default function EditProfessional({ professionalData, onChangeProfessiona
 
 function Job({ jobData, jobId, professionalData, setProfessional }) {
 
-    const [isChecked, setIsChecked] = useState(professionalData.current);
+    const [isChecked, setIsChecked] = useState(jobData.current);
 
     function handleCheck(e) {
         setIsChecked(isChecked === true ? false : true);
@@ -43,6 +44,7 @@ function Job({ jobData, jobId, professionalData, setProfessional }) {
         if (event.target.type==='checkbox') {
             newData[index][objectKey]=event.target.checked;
             newData[index]['endDate']='';
+            console.log(newData);
         } else {
             newData[index][objectKey]=event.target.value;
         }
@@ -54,13 +56,14 @@ function Job({ jobData, jobId, professionalData, setProfessional }) {
 
     return (
         <form className="text-charcoal flex flex-col px-3 py-3 border-2 rounded-lg m-3">
-            <label htmlFor="job" className="text-start">Job Title</label>
-            <input
-            type="text"
+            <label htmlFor="jobTitle" className="text-start">Job Title</label>
+            <TextInput
+            type='text'
+            placeholder={'Your official title'}
             value={jobData.jobTitle}
-            id="job"
-            onChange={(e) => handleChangeProfessional(e, 'jobTitle', jobId)}
-            className="rounded-lg p-1 mb-2"
+            id='jobTitle'
+            entryId={jobId}
+            handleClick={handleChangeProfessional}
             />
 
             <label htmlFor="responsibilities" className="text-start">Responsibilities</label>
@@ -73,13 +76,13 @@ function Job({ jobData, jobId, professionalData, setProfessional }) {
             className="rounded-lg p-1 mb-2"
             />
 
-            <label htmlFor="start" className="text-start">Start Date</label>
-            <input
-            type="date"
+            <label htmlFor="startDate" className="text-start">Start Date</label>
+            <TextInput
+            type='date'
             value={jobData.startDate}
-            id="start"
-            onChange={(e) => handleChangeProfessional(e, 'startDate', jobId)}
-            className="rounded-lg p-1 mb-2"
+            id='startDate'
+            entryId={jobId}
+            handleClick={handleChangeProfessional}
             />
 
             <div className="flex justify-start items-center gap-2">
@@ -95,15 +98,14 @@ function Job({ jobData, jobId, professionalData, setProfessional }) {
                 />
             </div>
 
-            <label htmlFor="end" className="text-start">End Date</label>
-            <input
-            disabled={isChecked}
-            checked={isChecked}
-            type="date"
+            <label htmlFor="endDate" className="text-start">End Date</label>
+            <TextInput
+            type='date'
             value={jobData.endDate}
-            id="end"
-            onChange={(e) => handleChangeProfessional(e, 'endDate', jobId)}
-            className="rounded-lg p-1 mb-2"
+            id='endDate'
+            entryId={jobId}
+            isDisabled={isChecked}
+            handleClick={handleChangeProfessional}
             />
 
         </form>
