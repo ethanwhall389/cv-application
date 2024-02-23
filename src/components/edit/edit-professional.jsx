@@ -1,7 +1,20 @@
 import { useState } from "react";
 import TextInput from "./text-input";
+import DeleteBttn from "../delete-bttn";
+
 
 export default function EditProfessional({ professionalData, onChangeProfessional }) {
+    
+    function handleDeleteEntry(event, entryId) {
+        event.preventDefault();
+        // console.log(event.target);        
+        const newData = professionalData.filter(job => {
+            return job.id !== entryId
+        })
+        onChangeEducationData(newData);
+
+    }
+    
     return (
         
         <div >
@@ -11,7 +24,10 @@ export default function EditProfessional({ professionalData, onChangeProfessiona
                 jobData={job}
                 jobId={job.id}
                 professionalData={professionalData}
-                setProfessional={onChangeProfessional}/>
+                setProfessional={onChangeProfessional}
+                >
+                    <DeleteBttn handleClick={handleDeleteEntry} entryId={entry.id}/>
+                </Job>
             ))}
             
         </div>
