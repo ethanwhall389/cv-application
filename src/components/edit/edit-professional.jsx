@@ -1,9 +1,25 @@
 import { useState } from "react";
 import TextInput from "./text-input";
 import DeleteBttn from "../delete-bttn";
+import Button from "../button";
 
 
 export default function EditProfessional({ professionalData, onChangeProfessional }) {
+    
+    
+    function handleNewEntry() {
+        const newData = [...professionalData];
+        const prevId = professionalData.length > 0 ? professionalData[professionalData.length-1].id : -1;
+        newData.push({
+            id: prevId+1,
+            jobTitle: '',
+            responsibilities: '',
+            startDate: '',
+            endDate: '',
+            current: false,
+        })
+        onChangeProfessional(newData);
+    }
     
     function handleDeleteEntry(event, entryId) {
         event.preventDefault();
@@ -11,7 +27,7 @@ export default function EditProfessional({ professionalData, onChangeProfessiona
         const newData = professionalData.filter(job => {
             return job.id !== entryId
         })
-        onChangeEducationData(newData);
+        onChangeProfessional(newData);
 
     }
     
@@ -26,15 +42,20 @@ export default function EditProfessional({ professionalData, onChangeProfessiona
                 professionalData={professionalData}
                 setProfessional={onChangeProfessional}
                 >
-                    <DeleteBttn handleClick={handleDeleteEntry} entryId={entry.id}/>
+                    <DeleteBttn handleClick={handleDeleteEntry} entryId={job.id}/>
                 </Job>
             ))}
-            
+
+            <Button
+            text={'Add Entry'}
+            handleClick={handleNewEntry}
+            />
+
         </div>
     )
 }
 
-function Job({ jobData, jobId, professionalData, setProfessional }) {
+function Job({ jobData, jobId, professionalData, setProfessional, children }) {
 
     const [isChecked, setIsChecked] = useState(jobData.current);
 
@@ -60,7 +81,6 @@ function Job({ jobData, jobId, professionalData, setProfessional }) {
         if (event.target.type==='checkbox') {
             newData[index][objectKey]=event.target.checked;
             newData[index]['endDate']='';
-            console.log(newData);
         } else {
             newData[index][objectKey]=event.target.value;
         }
@@ -87,6 +107,7 @@ function Job({ jobData, jobId, professionalData, setProfessional }) {
             rows={2}
             columns={50}
             value={jobData.responsibilities}
+            placeholder="Describe what you did in this position and how it brought value to your workplace."
             id="responsibilities"
             onChange={(e) => handleChangeProfessional(e, 'responsibilities', jobId)}
             className="rounded-lg p-1 mb-2"
@@ -123,6 +144,8 @@ function Job({ jobData, jobId, professionalData, setProfessional }) {
             isDisabled={isChecked}
             handleClick={handleChangeProfessional}
             />
+
+            {children}
 
         </form>
     )

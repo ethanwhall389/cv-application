@@ -77,6 +77,7 @@ function EducationEntry({ dataEntry, entryId, educationData, setEducationData, c
             <input
             type="text"
             value={dataEntry.schoolName}
+            placeholder="Name of the institution you attented"
             id="school"
             onChange={(e) => handleChangeEducation(e, 'schoolName', entryId)}
             className="rounded-lg p-1 mb-2"
@@ -85,6 +86,7 @@ function EducationEntry({ dataEntry, entryId, educationData, setEducationData, c
             <label htmlFor="degree" className="text-start">Degree</label>
             <input
             type="text"
+            placeholder="e.g. AS, BS"
             value={dataEntry.degree}
             id="degree"
             onChange={(e) => handleChangeEducation(e, 'degree', entryId)}
@@ -94,6 +96,7 @@ function EducationEntry({ dataEntry, entryId, educationData, setEducationData, c
             <label htmlFor="field" className="text-start">Field of study</label>
             <input
             type="text"
+            placeholder="What is your degree in?"
             value={dataEntry.field}
             id="field"
             onChange={(e) => handleChangeEducation(e, 'field', entryId)}

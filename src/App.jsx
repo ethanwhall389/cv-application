@@ -12,6 +12,7 @@ import Accordion from './components/edit/accordion'
 import DisplayGenInfo from './components/preview/display-gen-info'
 import DisplayEducation from './components/preview/display-education'
 import DisplayProfessional from './components/preview/display-professional'
+import { NoAdultContentSharp } from '@mui/icons-material'
 
 
 function App() {
@@ -30,6 +31,14 @@ function App() {
 
   function viewDemo() {
     setShowMain(true);
+  }
+
+  function noDisplay() {
+    return personalData.name === '' && 
+    educationData[0].id === '' && 
+    professionalData[0].id === '' ? 
+    true :
+    false;
   }
 
   return (
@@ -65,7 +74,10 @@ function App() {
           </Accordion>
         </Panel>
         <Panel title={'Preview'}>
-          <div className='border-2 rounded-md p-3'>
+          <h2 className='hidden text-2xl' style={noDisplay() ? {display: 'block'} : {display:'none'}}>Add something to the edit section to see a preview here!</h2>
+          <div className='rounded-md p-3'
+            style={noDisplay() ? {borderWidth: '0'} : {borderWidth: '2px'}}
+          >
             <DisplayGenInfo personalData={personalData}/>
             <DisplayEducation data={educationData}/>
             <DisplayProfessional data={professionalData}/>

@@ -5,7 +5,7 @@ export default function DisplayEducation({ data }) {
         <div className="my-4 text-start">
             <h2
                 className="text-lg font-bold border-b-2"
-                style={data.length > 0 ? {display:'block'} : {display:'none'}}
+                style={data[0].id === '' ? {display:'none'} : {display:'block'}}
             >Education</h2>
             {data.map( (entry, index) => (
                 <DisplayEntry key={entry.id} entryData={entry} length={data.length} index={index}/>
