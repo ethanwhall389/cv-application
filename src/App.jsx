@@ -12,7 +12,6 @@ import Accordion from './components/edit/accordion'
 import DisplayGenInfo from './components/preview/display-gen-info'
 import DisplayEducation from './components/preview/display-education'
 import DisplayProfessional from './components/preview/display-professional'
-import { NoAdultContentSharp } from '@mui/icons-material'
 
 
 function App() {
@@ -34,21 +33,28 @@ function App() {
   }
 
   function noDisplay() {
-    return personalData.name === '' && 
-    educationData[0].id === '' && 
-    professionalData[0].id === '' ? 
-    true :
-    false;
+    if (educationData.length !== 0 && professionalData.length !== 0) {
+      return personalData.name === '' && 
+      educationData[0].id === '' && 
+      professionalData[0].id === '' ? 
+      true :
+      false;
+    } else if (educationData.length === 0 && professionalData.length === 0 && personalData.name === '') {
+      return true;
+    }
+    return false;
   }
 
   return (
-  <div className='w-screen h-screen overflow-y-scroll bg-slate-500 p-6'>
-    <div className='flex gap-2 justify-center'
+  <div className='w-screen h-screen overflow-y-scroll bg-slate-500 p-6 flex flex-col justify-between'>
+    
+    <div className='flex flex-col gap-2 md:flex-row justify-center items-center h-[100%]'
       style={showMain ? {display:'none'} : {display:'flex'}}
     >
       <Button text={'Create New'} bttnColor='slate-400' handleClick={createNew}></Button>
       <Button text={'See Demo'} bttnColor='slate-400' handleClick={viewDemo}></Button>
     </div>
+
     <div className='max-w-2xl mx-auto lg:max-w-7xl'
       style={showMain ? {display:'block'} : {display:'none'}}
     >
@@ -85,6 +91,14 @@ function App() {
         </Panel>
       </div>
     </div>
+    <footer className="mt-10 flex justify-center">
+        <div className="flex items-center gap-3">
+            <a href="https://github.com/ethanwhall389" target="_blank" className="hover:scale-90 transition-all">
+              <img className="w-7" src="../images/github-mark-white.svg" alt=""/>
+            </a>
+            <span>Created by Ethan Hall</span>
+        </div>
+    </footer>
   </div>
   )
 }

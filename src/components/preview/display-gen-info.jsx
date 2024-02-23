@@ -4,9 +4,9 @@ export default function DisplayGenInfo({personalData}) {
         <div>
             <h2 className="text-2xl">{personalData.name}</h2>
             <p>{personalData.address}</p>
-            <div className="flex justify-center gap-2">
+            <div className="flex flex-col sm:flex-row justify-center gap-0 sm:gap-2">
                 <p>{personalData.email}</p>
-                <span>{personalData.phone === '' ? '' : '|'}</span>
+                <span className="hidden sm:block">{personalData.phone === '' ? '' : '|'}</span>
                 <p>{personalData.phone}</p>
             </div>
             <h2 

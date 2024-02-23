@@ -4,7 +4,7 @@ export default function DisplayProfessional({ data }) {
 
         <div className="my-4 text-start">
             <h2 className="text-lg font-bold border-b-2" 
-            style={data[0].id === '' ? {display:'none'} : {display:'block'}}
+            style={data.length === 0 || data[0].id === '' ? {display:'none'} : {display:'block'}}
             >Work Experience</h2>
             {data.map( (job, index) => (
                 <DisplayJob key={job.id} jobData={job} length={data.length} index={index}/>
