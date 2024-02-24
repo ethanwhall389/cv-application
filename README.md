@@ -2,7 +2,7 @@
 
 This web application allows the user to input information into a form, and see a resume generated for them in real time.
 
-## [View it live](https://cv-generator-live.netlify.app){:target="_blank"}
+## [View it live](https://cv-generator-live.netlify.app)
 
 ## Tech stack:
 - HTML
