@@ -47,7 +47,7 @@ export default function EditProfessional({ professionalData, onChangeProfessiona
             ))}
 
             <Button
-            text={'Add Entry'}
+            text={'Add Job'}
             handleClick={handleNewEntry}
             />
 

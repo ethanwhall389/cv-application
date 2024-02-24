@@ -33,17 +33,23 @@ function App() {
   }
 
   function noDisplay() {
-    if (educationData.length !== 0 && professionalData.length !== 0) {
-      return personalData.name === '' && 
-      educationData[0].id === '' && 
-      professionalData[0].id === '' ? 
-      true :
-      false;
-    } else if (educationData.length === 0 && professionalData.length === 0 && personalData.name === '') {
-      return true;
+    if (personalData.name === '') {
+      if (educationData.length === 0 && professionalData.length === 0) {
+        return true;
+      }
+      if (educationData.length === 0 && professionalData[0] !== undefined && professionalData[0].id === '') {
+        return true;
+      }
+      if (educationData[0] !== undefined && educationData[0].id === '' && professionalData.length === 0) {
+        return true;
+      }
+      if (educationData[0] !== undefined && educationData[0].id === '' && professionalData[0].id === '') {
+        return true;
+      }
     }
     return false;
-  }
+
+}
 
   return (
   <div className='w-screen h-screen overflow-y-scroll bg-slate-500 p-6 flex flex-col justify-between'>
@@ -79,8 +85,11 @@ function App() {
             />
           </Accordion>
         </Panel>
+
         <Panel title={'Preview'}>
-          <h2 className='hidden text-2xl' style={noDisplay() ? {display: 'block'} : {display:'none'}}>Add something to the edit section to see a preview here!</h2>
+          <h2 className='hidden text-xl' style={noDisplay() ? {display: 'block'} : {display:'none'}}>
+            Add something to the edit section to see a preview here!
+          </h2>
           <div className='rounded-md p-3'
             style={noDisplay() ? {borderWidth: '0'} : {borderWidth: '2px'}}
           >
@@ -91,6 +100,7 @@ function App() {
         </Panel>
       </div>
     </div>
+
     <footer className="mt-10 flex justify-center">
         <div className="flex items-center gap-3">
             <a href="https://github.com/ethanwhall389" target="_blank" className="hover:scale-90 transition-all">
