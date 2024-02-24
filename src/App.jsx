@@ -104,7 +104,7 @@ function App() {
     <footer className="mt-10 flex justify-center">
         <div className="flex items-center gap-3">
             <a href="https://github.com/ethanwhall389" target="_blank" className="hover:scale-90 transition-all">
-              <img className="w-7" src="images/github-mark-white.svg" alt=""/>
+              <img className="w-7" src="assets/images/github-mark-white.svg" alt=""/>
             </a>
             <span>Created by Ethan Hall</span>
         </div>
