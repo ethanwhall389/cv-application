@@ -1,8 +1,13 @@
-# React + Vite
+# CV Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This web application allows the user to input information into a form, and see a resume generated for them in real time.
 
-Currently, two official plugins are available:
+## [View it live]()
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech stack:
+- HTML
+- React
+- TailwindCSS
+
+## Challenges
+This was the first project I built using react, so that brought it's own set of challenges. Particularly, getting my head around states and how they can be passed down through components proved to be a tricky concept at first.
