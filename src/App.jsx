@@ -55,7 +55,7 @@ function App() {
       <Button text={'See Demo'} bttnColor='slate-400' handleClick={viewDemo}></Button>
     </div>
 
-    <div className='max-w-2xl mx-auto lg:max-w-7xl'
+    <div className='max-w-2xl lg:max-w-7xl self-center w-[100%]'
       style={showMain ? {display:'block'} : {display:'none'}}
     >
       <h1 className='text-3xl font-bold mb-6'>CV Generator</h1>
